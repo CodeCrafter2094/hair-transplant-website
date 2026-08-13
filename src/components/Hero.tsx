@@ -137,7 +137,7 @@ export default function Hero() {
           <div className="flex flex-col items-center gap-1">
             <ArrowDown
               size={14}
-              className="text-graphite-100 group-hover:text-gold-300 transition-colors animate-bounce"
+              className="text-graphite-100 group-hover:text-gold-300 transition-colors"
             />
           </div>
           <span className="text-xs text-graphite-100 tracking-widest2 uppercase">

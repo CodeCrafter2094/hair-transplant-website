@@ -1,86 +1,31 @@
-import { clinicData, navLinks } from '../data/siteData'
+import { ArrowUpRight, MessageCircle } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
+const whatsapp = 'https://wa.me/447988487251?text=Hello%2C%20I%27d%20like%20a%20private%20hair%20transplant%20assessment.'
 
 export default function Footer() {
-  const year = new Date().getFullYear()
-
   return (
-    <footer
-      className="bg-graphite-800 border-t border-white/5 py-16"
-      role="contentinfo"
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <p className="font-display text-2xl text-cream-100 tracking-widest2 mb-4">
-              {clinicData.name}
-            </p>
-            <p className="text-sm text-graphite-100 font-light leading-relaxed max-w-xs">
-              Premium hair restoration in the heart of Istanbul. Natural results,
-              surgical precision, lasting confidence.
-            </p>
-          </div>
-
-          {/* Navigation */}
-          <div>
-            <p className="text-xs text-graphite-200 tracking-widest2 uppercase mb-6">
-              Navigation
-            </p>
-            <ul className="space-y-3" role="list">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-graphite-100 hover:text-cream-100 transition-colors font-light"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p className="text-xs text-graphite-200 tracking-widest2 uppercase mb-6">
-              Contact
-            </p>
-            <ul className="space-y-3 text-sm text-graphite-100 font-light" role="list">
-              <li>
-                <a
-                  href={`tel:${clinicData.phone}`}
-                  className="hover:text-cream-100 transition-colors"
-                  aria-label={`Call us at ${clinicData.phone}`}
-                >
-                  {clinicData.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${clinicData.email}`}
-                  className="hover:text-cream-100 transition-colors"
-                  aria-label={`Email us at ${clinicData.email}`}
-                >
-                  {clinicData.email}
-                </a>
-              </li>
-              <li>{clinicData.address}</li>
-            </ul>
-          </div>
+    <footer className="site-footer">
+      <div className="footer-main">
+        <div>
+          <div className="footer-brand">Turkey Hair Transplant <span>Antalya</span></div>
+          <p>Clear planning for people considering hair restoration in Antalya.</p>
         </div>
-
-        {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-graphite-200">
-          <p>© {year} {clinicData.name}. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-cream-100 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-cream-100 transition-colors">
-              Terms of Service
-            </a>
-          </div>
+        <div className="footer-nav">
+          <Link to="/results">Results</Link>
+          <Link to="/techniques">Techniques</Link>
+          <Link to="/journey">Your journey</Link>
+          <Link to="/contact">Contact</Link>
         </div>
+        <a className="footer-whatsapp" data-magnetic href={whatsapp} target="_blank" rel="noreferrer">
+          <MessageCircle size={19} />
+          <span><small>WhatsApp</small>+44 7988 487251</span>
+          <ArrowUpRight size={17} />
+        </a>
+      </div>
+      <div className="footer-bottom">
+        <span>© {new Date().getFullYear()} Turkey Hair Transplant Antalya</span>
+        <span>Information on this site is general and does not replace individual medical advice.</span>
       </div>
     </footer>
   )

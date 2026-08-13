@@ -9,6 +9,9 @@ import Results from './pages/Results'
 import Treatments from './pages/Treatments'
 import Process from './pages/Process'
 import Contact from './pages/Contact'
+import InteractiveMotion from './components/InteractiveMotion'
+import MotionControl from './components/MotionControl'
+import PageLoader from './components/PageLoader'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -34,14 +37,18 @@ function Layout() {
 
   return (
     <>
+      <PageLoader />
+      <InteractiveMotion />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<Results />} />
-        <Route path="/treatments" element={<Treatments />} />
-        <Route path="/process" element={<Process />} />
+        <Route path="/techniques" element={<Treatments />} />
+        <Route path="/journey" element={<Process />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Home />} />
       </Routes>
+      <MotionControl />
     </>
   )
 }

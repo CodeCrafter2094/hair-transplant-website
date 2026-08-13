@@ -1,7 +1,16 @@
 import { useEffect, useState } from 'react'
+import { ArrowUpRight, Menu, MessageCircle, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
-import { navLinks } from '../data/siteData'
+
+const links = [
+  { label: 'Results', description: 'How to assess real evidence', href: '/results' },
+  { label: 'Techniques', description: 'FUE, DHI and Sapphire FUE', href: '/techniques' },
+  { label: 'Your journey', description: 'From photos to follow-up', href: '/journey' },
+  { label: 'Contact', description: 'Start a private assessment', href: '/contact' },
+]
+
+const whatsappUrl =
+  'https://wa.me/447988487251?text=Hello%2C%20I%27d%20like%20a%20private%20hair%20transplant%20assessment.'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -9,133 +18,87 @@ export default function Navbar() {
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
+    const onScroll = () => setScrolled(window.scrollY > 36)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false)
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, behavior: 'auto' })
   }, [location.pathname])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
   }, [menuOpen])
 
-  const isActive = (href: string) =>
-    href === '/' ? location.pathname === '/' : location.pathname.startsWith(href)
-
   return (
-    <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-graphite-900/85 backdrop-blur-xl border-b border-white/5'
-            : 'bg-transparent'
-        }`}
-        aria-label="Main navigation"
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link
-              to="/"
-              className="font-display text-lg font-light tracking-widest text-cream-100 hover:text-gold-300 transition-colors"
-              aria-label="Antalya Hair Transplant — Home"
-            >
-              Antalya <span className="text-gold-300">Hair</span> Transplant
-            </Link>
+    <header className={`site-header ${scrolled || location.pathname !== '/' ? 'is-scrolled' : ''} ${menuOpen ? 'menu-is-open' : ''}`}>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <nav className="nav-shell" aria-label="Main navigation">
+        <Link to="/" className="brand" aria-label="Turkey Hair Transplant Antalya home">
+          <span className="brand-mark" aria-hidden="true"><span /></span>
+          <span className="brand-copy">Turkey Hair Transplant <b>Antalya</b></span>
+        </Link>
 
-            {/* Desktop links */}
-            <ul className="hidden lg:flex items-center gap-8" role="list">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className={`text-sm tracking-wider uppercase font-light transition-colors ${
-                      isActive(link.href)
-                        ? 'text-gold-300'
-                        : 'text-graphite-100 hover:text-cream-100'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <div className="hidden lg:block">
-              <Link
-                to="/contact"
-                className="group relative px-6 py-2.5 text-sm tracking-wider uppercase font-light overflow-hidden border border-gold-400/60 text-gold-300 hover:text-graphite-900 transition-colors duration-300 inline-block"
-              >
-                <span className="relative z-10">Free Consultation</span>
-                <span className="absolute inset-0 bg-gold-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-              </Link>
-            </div>
-
-            {/* Hamburger */}
-            <button
-              className="lg:hidden text-cream-100 p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-expanded={menuOpen}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            >
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-graphite-900/98 backdrop-blur-2xl flex flex-col justify-center px-8 transition-all duration-500 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        aria-hidden={!menuOpen}
-      >
-        <ul className="space-y-8" role="list">
-          {navLinks.map((link, i) => (
-            <li
-              key={link.label}
-              style={{
-                transitionDelay: menuOpen ? `${i * 60}ms` : '0ms',
-                transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
-                opacity: menuOpen ? 1 : 0,
-                transition: 'transform 0.4s ease, opacity 0.4s ease',
-              }}
-            >
-              <Link
-                to={link.href}
-                className="font-display text-4xl font-light text-cream-100 hover:text-gold-300 transition-colors"
-              >
-                {link.label}
-              </Link>
+        <ul className="nav-links" role="list">
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link className={location.pathname === link.href ? 'is-active' : ''} to={link.href}>{link.label}</Link>
             </li>
           ))}
         </ul>
 
-        <div
-          className="mt-12"
-          style={{
-            transitionDelay: menuOpen ? '360ms' : '0ms',
-            transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
-            opacity: menuOpen ? 1 : 0,
-            transition: 'transform 0.4s ease, opacity 0.4s ease',
-          }}
+        <a className="nav-whatsapp" data-magnetic href={whatsappUrl} target="_blank" rel="noreferrer">
+          <MessageCircle size={17} aria-hidden="true" />
+          <span>Private assessment</span>
+        </a>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          onClick={() => setMenuOpen((value) => !value)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
         >
-          <Link
-            to="/contact"
-            className="block w-full py-4 border border-gold-400/60 text-gold-300 text-sm tracking-widest uppercase text-center hover:bg-gold-400/10 transition-colors"
-          >
-            Free Consultation
-          </Link>
+          <span className="menu-toggle-label">{menuOpen ? 'Close' : 'Menu'}</span>
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      <div id="mobile-menu" className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
+        <div className="mobile-menu-inner">
+          <div className="mobile-menu-heading">
+            <p>Explore the clinic</p>
+            <span>Antalya / UK private line</span>
+          </div>
+          <div className="mobile-route-list">
+            {links.map((link, index) => (
+              <Link key={link.href} to={link.href} tabIndex={menuOpen ? 0 : -1} className={location.pathname === link.href ? 'is-active' : ''}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div><b>{link.label}</b><small>{link.description}</small></div>
+                <ArrowUpRight size={19} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+          <div className="mobile-menu-footer">
+            <a className="mobile-wa" href={whatsappUrl} target="_blank" rel="noreferrer" tabIndex={menuOpen ? 0 : -1}>
+              <MessageCircle size={18} /> Start on WhatsApp
+            </a>
+            <p>+44 7988 487251</p>
+          </div>
         </div>
       </div>
-    </>
+    </header>
   )
 }
