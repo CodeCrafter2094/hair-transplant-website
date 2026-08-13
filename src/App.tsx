@@ -12,6 +12,9 @@ import Contact from './pages/Contact'
 import InteractiveMotion from './components/InteractiveMotion'
 import MotionControl from './components/MotionControl'
 import PageLoader from './components/PageLoader'
+import AdminPanel from './admin/AdminPanel'
+import Blog from './pages/Blog'
+import BlogPostPage from './pages/BlogPost'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,6 +49,8 @@ function Layout() {
         <Route path="/techniques" element={<Treatments />} />
         <Route path="/journey" element={<Process />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <MotionControl />
@@ -56,7 +61,10 @@ function Layout() {
 export default function App() {
   return (
     <BrowserRouter>
-      <Layout />
+      <Routes>
+        <Route path="/admin/*" element={<AdminPanel />} />
+        <Route path="/*" element={<Layout />} />
+      </Routes>
     </BrowserRouter>
   )
 }

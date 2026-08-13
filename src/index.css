@@ -489,3 +489,51 @@ html[data-motion='reduced'] [data-reveal] { opacity: 1; transform: none; transit
 html[data-motion='reduced'] [data-page-reveal] { opacity: 1; transform: none; transition: none; }
 html[data-motion='reduced'] .hero-particle-field { opacity: .24; }
 html[data-motion='reduced'] .hero-content, html[data-motion='reduced'] .hero-plan, html[data-motion='reduced'] .technique-visual, html[data-motion='reduced'] .antalya-visual, html[data-motion='reduced'] .proof-card, html[data-motion='reduced'] .inner-hero-object { transform: none !important; will-change: auto; }
+
+/* ── Admin Panel ──────────────────────────────────────────── */
+.admin-input {
+  @apply w-full bg-graphite-800 text-cream-50 px-4 py-2.5 text-sm
+         focus:outline-none transition-colors placeholder-graphite-300;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+.admin-input:focus {
+  border-color: rgba(201,160,90,0.60);
+}
+
+/* ── Blog post content ────────────────────────────────────── */
+.prose-blog {
+  @apply text-graphite-100 text-base font-light leading-relaxed;
+}
+.prose-blog h1,
+.prose-blog h2,
+.prose-blog h3,
+.prose-blog h4 {
+  @apply font-display font-light text-cream-50 mt-10 mb-4 leading-tight;
+}
+.prose-blog h1 { @apply text-3xl; }
+.prose-blog h2 { @apply text-2xl; }
+.prose-blog h3 { @apply text-xl; }
+.prose-blog h4 { @apply text-lg; }
+.prose-blog p  { @apply mb-5; }
+.prose-blog a  { @apply text-gold-300 underline underline-offset-4 hover:text-gold-400 transition-colors; }
+.prose-blog ul { @apply list-disc list-inside mb-5 space-y-1.5; }
+.prose-blog ol { @apply list-decimal list-inside mb-5 space-y-1.5; }
+.prose-blog li { @apply text-graphite-100; }
+.prose-blog blockquote {
+  @apply border-l-2 border-gold-400 pl-5 my-6 text-graphite-100 italic;
+}
+.prose-blog code {
+  @apply bg-graphite-800 text-gold-300 px-1.5 py-0.5 text-sm font-mono;
+}
+.prose-blog pre {
+  @apply bg-graphite-800 p-5 overflow-x-auto my-6 text-sm font-mono text-green-300;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.prose-blog img {
+  @apply w-full my-6;
+}
+.prose-blog hr {
+  @apply my-10;
+  border-color: rgba(255,255,255,0.10);
+}
+.prose-blog strong { @apply text-cream-50 font-medium; }

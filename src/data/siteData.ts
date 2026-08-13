@@ -180,5 +180,6 @@ export const navLinks = [
   { label: 'Treatments', href: '/treatments' },
   { label: 'Results', href: '/results' },
   { label: 'Process', href: '/process' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ]
