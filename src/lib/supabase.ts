@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
@@ -48,3 +49,16 @@ export type BlogPost = {
 }
 
 export type BlogPostInsert = Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>
+
+export type BeforeAfterCase = {
+  id: string
+  created_at: string
+  title: string
+  technique: string | null
+  grafts: string | null
+  months: string | null
+  before_url: string
+  after_url: string
+  order_index: number
+  published: boolean
+}

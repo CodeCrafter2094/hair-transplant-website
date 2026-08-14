@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { supabase, BlogPost, BlogPostInsert } from '../lib/supabase'
-import { ArrowLeft, Save, Upload, X, Eye, EyeOff, ChevronDown, ChevronUp } from 'lucide-react'
+import { ArrowLeft, Save, Upload, X, ChevronDown, ChevronUp } from 'lucide-react'
 import MDEditor from '@uiw/react-md-editor'
 
 interface Props {

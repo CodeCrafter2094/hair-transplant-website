@@ -15,6 +15,7 @@ import PageLoader from './components/PageLoader'
 import AdminPanel from './admin/AdminPanel'
 import Blog from './pages/Blog'
 import BlogPostPage from './pages/BlogPost'
+import BeforeAfterPage from './pages/BeforeAfterPage'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -51,6 +52,7 @@ function Layout() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/before-after" element={<BeforeAfterPage />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <MotionControl />

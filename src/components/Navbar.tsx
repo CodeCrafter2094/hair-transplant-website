@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 const links = [
   { label: 'Results', description: 'How to assess real evidence', href: '/results' },
+  { label: 'Before & After', description: 'Real patient transformations', href: '/before-after' },
   { label: 'Techniques', description: 'FUE, DHI and Sapphire FUE', href: '/techniques' },
   { label: 'Your journey', description: 'From photos to follow-up', href: '/journey' },
   { label: 'Blog', description: 'Hair transplant guides & tips', href: '/blog' },

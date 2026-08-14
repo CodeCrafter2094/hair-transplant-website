@@ -9,6 +9,7 @@ export type InnerPageItem = {
   title: string
   body: string
   points: string[]
+  image?: string
 }
 
 type InnerPageProps = {
@@ -69,6 +70,15 @@ export default function InnerPage({ pageCode, title, accent, intro, documentTitl
             <article id={`chapter-${index + 1}`} key={item.title} data-page-reveal>
               <div className="chapter-meta"><span>{String(index + 1).padStart(2, '0')}</span><b>{item.label}</b></div>
               <h2>{item.title}</h2>
+              {item.image && (
+                <div className="chapter-image">
+                  <img
+                    src={item.image}
+                    alt={`${item.title} technique`}
+                    loading="lazy"
+                  />
+                </div>
+              )}
               <p>{item.body}</p>
               <ul>{item.points.map((point) => <li key={point}><Check size={16} />{point}</li>)}</ul>
             </article>
