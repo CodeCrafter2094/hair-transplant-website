@@ -405,17 +405,32 @@ export default function Home() {
 
       <section className="section antalya-section" id="why-antalya">
         <div className="antalya-visual" data-reveal>
-          <img
-            src="/assets/Antalya.jpg"
-            alt="Antalya, Turkey"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              display: 'block',
-            }}
-          />
+          <div className="antalya-collage">
+            {/* Sol kolon */}
+            <div className="collage-col collage-col-left">
+              <div className="collage-item">
+                <img src="/assets/Antalya2.jpg" alt="Antalya" loading="lazy" />
+              </div>
+              <div className="collage-item">
+                <img src="/assets/Antalya3.jpg" alt="Antalya" loading="lazy" />
+              </div>
+            </div>
+            {/* Orta — büyük */}
+            <div className="collage-col collage-col-center">
+              <div className="collage-item collage-item-main">
+                <img src="/assets/Antalya.jpg" alt="Antalya" loading="lazy" />
+              </div>
+            </div>
+            {/* Sağ kolon */}
+            <div className="collage-col collage-col-right">
+              <div className="collage-item">
+                <img src="/assets/Antalya4.jpg" alt="Antalya" loading="lazy" />
+              </div>
+              <div className="collage-item">
+                <img src="/assets/Antalya5.jpg" alt="Antalya" loading="lazy" />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="antalya-copy" data-reveal>
           <h2>Choose Antalya for the plan—not only the destination.</h2>
