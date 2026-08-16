@@ -418,7 +418,7 @@ export default function Home() {
             {/* Orta — büyük */}
             <div className="collage-col collage-col-center">
               <div className="collage-item collage-item-main">
-                <img src="/assets/Antalya.jpg" alt="Antalya" loading="lazy" />
+                <img src="/assets/hadrian.jpg" alt="Antalya" loading="lazy" />
               </div>
             </div>
             {/* Sağ kolon */}
