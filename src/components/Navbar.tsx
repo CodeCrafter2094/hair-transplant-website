@@ -48,8 +48,10 @@ export default function Navbar() {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <nav className="nav-shell" aria-label="Main navigation">
         <Link to="/" className="brand" aria-label="Turkey Hair Transplant Antalya home">
-          <span className="brand-mark" aria-hidden="true"><span /></span>
-          <span className="brand-copy">Turkey Hair Transplant <b>Antalya</b></span>
+          <span className="brand-copy">
+            <span className="brand-line1">Turkey Hair Transplant</span>
+            <span className="brand-line2">Antalya</span>
+          </span>
         </Link>
 
         <ul className="nav-links" role="list">
