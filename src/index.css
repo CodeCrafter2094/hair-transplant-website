@@ -147,11 +147,10 @@ html[data-motion='full'] .echo-trail { animation: echo-trace 520ms var(--ease-ou
 .proof-card-1 { transform: rotateY(5deg) scale(.92); opacity: .72; }.proof-card-2 { min-height: 540px; transform: translateY(-12px) scale(1.03); }.proof-card-3 { transform: rotateY(-5deg) scale(.92); opacity: .72; }
 .proof-card-top { display: flex; justify-content: space-between; color: rgba(243,240,232,.45); font: 500 9px/1 'IBM Plex Mono', monospace; letter-spacing: .08em; }
 .proof-card-top b { color: var(--copper); font-weight: 500; }
-.proof-orb { position: relative; display: grid; place-items: center; width: 70%; aspect-ratio: 1; margin: auto; border: 1px solid rgba(79,124,255,.28); border-radius: 50%; transform: translateZ(55px); }
-.proof-orb::before, .proof-orb::after { content: ''; position: absolute; inset: 14%; border: 1px solid rgba(240,112,58,.38); border-radius: 50%; transform: rotateX(64deg); }
-.proof-orb::after { inset: 31%; transform: rotateY(66deg); border-color: rgba(243,240,232,.23); }
-.proof-orb span { font-size: clamp(3rem, 6vw, 6rem); line-height: 1; color: rgba(243,240,232,.14); font-weight: 700; }
-.proof-orb i { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--copper); right: 12%; top: 36%; box-shadow: 0 7px 24px rgba(240,112,58,.45); }
+.proof-orb { position: relative; display: grid; place-items: center; width: 70%; aspect-ratio: 1; margin: auto; border-radius: 50%; transform: translateZ(55px); overflow: hidden; }
+.proof-orb::before, .proof-orb::after { content: none; }
+.proof-orb span { position: relative; z-index: 2; font-size: clamp(2rem, 4vw, 4rem); line-height: 1; color: rgba(243,240,232,.0); font-weight: 700; }
+.proof-orb i { display: none; }
 html[data-motion='full'] .proof-card-2 .proof-orb { animation: proof-orbit 7s linear infinite; }
 .proof-card h3 { margin: 10px 0 12px; font-size: 22px; letter-spacing: -.025em; }
 .proof-card p { margin: 0; color: rgba(243,240,232,.58); font-size: 13px; line-height: 1.7; }

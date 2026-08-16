@@ -268,13 +268,25 @@ export default function Home() {
         </div>
         <div className="proof-deck" data-reveal>
           {[
-            { code: 'ANGLE', title: 'Consistent viewpoint', text: 'Compare the same angle, distance, lighting and hair condition.', mark: 'A' },
-            { code: 'TIME', title: 'Mature follow-up', text: 'Always ask when the after image was captured and what changed over time.', mark: '12M' },
-            { code: 'MATCH', title: 'Comparable profile', text: 'Look for a similar loss pattern, donor profile and realistic coverage goal.', mark: 'M' },
+            { code: 'ANGLE', title: 'Consistent viewpoint', text: 'Compare the same angle, distance, lighting and hair condition.', mark: 'A', img: '/assets/techniques/fue.jpg' },
+            { code: 'TIME', title: 'Mature follow-up', text: 'Always ask when the after image was captured and what changed over time.', mark: '12M', img: '/assets/Takvim-zaman.jpg' },
+            { code: 'MATCH', title: 'Comparable profile', text: 'Look for a similar loss pattern, donor profile and realistic coverage goal.', mark: 'M', img: '/assets/Konsültasyon-muayene.jpg' },
           ].map((item, index) => (
             <article className={`proof-card proof-card-${index + 1}`} key={item.code} data-tilt-surface>
               <div className="proof-card-top"><span>{item.code}</span><b>CASE STANDARD</b></div>
-              <div className="proof-orb" aria-hidden="true"><span>{item.mark}</span><i /></div>
+              <div className="proof-orb" aria-hidden="true">
+                <img
+                  src={item.img}
+                  alt=""
+                  style={{
+                    position: 'absolute', inset: 0, width: '100%', height: '100%',
+                    objectFit: 'cover', objectPosition: 'center',
+                    borderRadius: '50%',
+                  }}
+                />
+                <span style={{ position: 'relative', zIndex: 2 }}>{item.mark}</span>
+                <i />
+              </div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
