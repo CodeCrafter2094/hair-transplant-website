@@ -25,7 +25,7 @@ export const techniques = [
       'Fast recovery time',
       'Natural-looking results',
     ],
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
+    image: '/assets/techniques/fue.jpg',
   },
   {
     id: 'dhi',
@@ -39,7 +39,7 @@ export const techniques = [
       'Minimal trauma',
       'Quicker healing',
     ],
-    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80',
+    image: '/assets/techniques/dhi.jpg',
   },
   {
     id: 'sapphire',
@@ -53,7 +53,7 @@ export const techniques = [
       'Denser implantation possible',
       'Superior healing',
     ],
-    image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80',
+    image: '/assets/techniques/sapphire-fue.jpg',
   },
 ]
 

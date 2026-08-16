@@ -185,6 +185,8 @@ html[data-motion='full'] .proof-card-2 .proof-orb { animation: proof-orbit 7s li
 .technique-tabs small { display: block; margin-top: 7px; font: 400 9px/1.4 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .04em; }
 .technique-panel { display: grid; grid-template-columns: .85fr 1.15fr; min-height: 490px; }
 .technique-visual { position: relative; overflow: hidden; display: grid; place-items: center; border-right: 1px solid var(--line); background: #0c1117; transform-style: preserve-3d; transition: transform 220ms var(--ease-out); will-change: transform; }
+.technique-visual::before, .technique-visual::after { content: none; }
+.technique-visual-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(12,17,23,.7) 0%, rgba(12,17,23,.2) 60%, rgba(12,17,23,.3) 100%); }
 .technique-visual::before, .technique-visual::after { content: ''; position: absolute; width: 340px; height: 340px; border: 1px solid rgba(79,124,255,.24); border-radius: 50%; }
 .technique-visual::after { width: 240px; height: 240px; border-color: rgba(240,112,58,.4); }
 .technique-visual p { position: relative; z-index: 2; font-size: clamp(4rem, 9vw, 8rem); font-weight: 600; letter-spacing: -.04em; color: rgba(243,240,232,.06); }
@@ -213,9 +215,8 @@ html[data-motion='full'] .proof-card-2 .proof-orb { animation: proof-orbit 7s li
 .journey-list p { margin: 0; color: rgba(8,11,15,.7); font-size: 14px; line-height: 1.65; }
 
 .antalya-section { background: var(--paper); color: var(--ink); display: grid; grid-template-columns: 1.12fr .88fr; gap: 8vw; align-items: center; overflow: hidden; }
-.antalya-visual { position: relative; min-height: 480px; background: #111820; display: grid; place-items: center; overflow: hidden; transform-style: preserve-3d; transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out); will-change: transform; box-shadow: 0 28px 70px rgba(8,11,15,.2); }
-.antalya-visual::before { content: ''; position: absolute; width: 62%; aspect-ratio: 1; border: 1px solid rgba(240,112,58,.4); border-radius: 50%; box-shadow: inset 0 0 80px rgba(240,112,58,.08); }
-.antalya-visual::after { content: ''; position: absolute; inset: 30px; border: 1px solid rgba(243,240,232,.12); }
+.antalya-visual { position: relative; min-height: 480px; background: #111820; overflow: hidden; box-shadow: 0 28px 70px rgba(8,11,15,.2); }
+.antalya-visual::before, .antalya-visual::after { content: none; }
 .antalya-type { font-size: clamp(3rem, 7vw, 7rem); font-weight: 700; letter-spacing: -.04em; color: rgba(243,240,232,.08); transform: rotate(-90deg); }
 .route-line { position: absolute; z-index: 2; left: 11%; right: 11%; top: 47%; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; color: var(--paper); font: 500 10px/1 'IBM Plex Mono', monospace; transform: translateZ(62px); }
 .route-line i { height: 1px; background: linear-gradient(90deg, var(--blue), var(--copper)); position: relative; }

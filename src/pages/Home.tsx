@@ -338,10 +338,21 @@ export default function Home() {
 
           <div className="technique-panel" id="technique-panel" role="tabpanel">
             <div className="technique-visual" data-tilt-surface aria-hidden="true">
-              <span className="follicle follicle-a" /><span className="follicle follicle-b" />
-              <span className="follicle follicle-c" /><span className="follicle follicle-d" />
-              <div className="density-line" />
-              <p>{active.name}</p>
+              {techniques.map((technique, index) => (
+                <img
+                  key={technique.id}
+                  src={`/assets/techniques/${technique.id === 'sapphire' ? 'sapphire-fue' : technique.id}.jpg`}
+                  alt=""
+                  className="technique-visual-img"
+                  style={{
+                    position: 'absolute', inset: 0, width: '100%', height: '100%',
+                    objectFit: 'cover', objectPosition: 'center',
+                    opacity: activeTechnique === index ? 1 : 0,
+                    transition: 'opacity 0.5s ease',
+                  }}
+                />
+              ))}
+              <div className="technique-visual-overlay" />
             </div>
             <div className="technique-copy" key={active.id}>
               <span className="tech-code">METHOD / {active.name}</span>
@@ -381,9 +392,18 @@ export default function Home() {
       </section>
 
       <section className="section antalya-section" id="why-antalya">
-        <div className="antalya-visual" data-reveal data-tilt-surface>
-          <div className="antalya-type" aria-hidden="true">ANTALYA</div>
-          <div className="route-line" aria-hidden="true"><span>LONDON</span><i /><b>AYT</b></div>
+        <div className="antalya-visual" data-reveal>
+          <img
+            src="/assets/Antalya.jpg"
+            alt="Antalya, Turkey"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              display: 'block',
+            }}
+          />
         </div>
         <div className="antalya-copy" data-reveal>
           <h2>Choose Antalya for the plan—not only the destination.</h2>
